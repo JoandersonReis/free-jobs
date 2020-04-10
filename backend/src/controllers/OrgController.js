@@ -23,5 +23,13 @@ module.exports = {
     })
 
     return res.json({ id })
+  },
+
+  async search(req, res) {
+    const authorization = req.headers.authorization
+
+    const org = await connection("orgs").where("id", authorization).select("*").first()
+
+    return res.json(org)
   }
 }

@@ -9,6 +9,7 @@ const ProfileController = require("./controllers/ProfileController")
 // Orgs
 router.get("/orgs", OrgController.index)
 router.post("/orgs", OrgController.create)
+router.get("/org", OrgController.search)
 
 // Jobs
 router.get("/jobs", JobController.index)
@@ -17,7 +18,7 @@ router.put("/jobs", JobController.update)
 router.delete("/jobs/:id", JobController.delete)
 
 // Profile
-router.post("/profile", ProfileController.index)
+router.get("/profile", ProfileController.index)
 
 // Sessions
 router.post("/login", SessionController.create)

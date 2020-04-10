@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #ddd;
+}
+
+.button {
+  background-color: #1379B9;
+  width: 100%;
+  padding: 10px 0px;
+  border-radius: 1px;
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.register-link {
+  display: flex;
+  text-decoration: none;
+  color: #1379B9;
+  font-size: 16px;
+  display: block;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+.register-link:hover {
+  opacity: 0.9;
+}
+
+.register-link .icon {
+  margin-right: 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.img-logo {
+  height: 60px;
+  width: 130px;
+}
+
+
+/* Registro e edições */
+.container-register {
+  width: 50%;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 4px 4px 10px #999;
+}
+
+.container-register .apresentation {
+  border-right: 1px solid #ddd;
+  width: 100%;
+}
+
+.container-register .apresentation h1 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.container-register .apresentation p {
+  font-size: 18px;
+  color: #555;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.container-register .apresentation .back-link {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #1379B9;
+  display: flex;
+  margin-top: 50px;
+  align-items: center;
+}
+
+
+
+/* Container inputs */
+.container-inputs {
+  padding: 10px;
+  width: 100%;
+}
+
+.container-inputs .input {
+  display: block;
+  height: 30px;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  font-size: 17px;
+}
