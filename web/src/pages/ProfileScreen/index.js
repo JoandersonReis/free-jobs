@@ -17,6 +17,10 @@ function ProfileScreen() {
   const orgName = localStorage.getItem("orgName")
 
 
+  function handleEditScreen(data) {
+    history.push("/job/edit", data)
+  }
+
   async function handleDeleteJob(id) {
     await api.delete(`jobs/${id}`, {
       headers: {
@@ -81,13 +85,26 @@ function ProfileScreen() {
 
         <ul>
           {jobs.map(job => (
-            <li className="job">
+            <li key={job.id} className="job">
               <button className="delete-job" onClick={() => handleDeleteJob(job.id)}><FiTrash2 size={20} color="#999" /></button>
               <h1 className="title">{job.title}</h1>
               <p className="description">{job.description}</p>
               <p className="job-info"><span>Carga Horária: </span>{job.workload} horas</p>
               <p className="job-info"><span>Salário: </span>{Intl.NumberFormat("pt-BR", {style: "currency", currency: "BRL"}).format(job.salary)}</p>
-              <button className="button">Editar</button>
+              <button 
+                className="button" 
+                onClick={() => {
+                  const data = {
+                    id: job.id,
+                    title: job.title,
+                    description: job.description,
+                    salary: job.salary,
+                    workload: job.workload
+                  }
+
+                  handleEditScreen(data)
+                }}
+              >Editar</button>
             </li>
           ))}
         </ul>

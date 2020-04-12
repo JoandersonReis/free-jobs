@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { FiArrowLeft } from "react-icons/fi"
 import { Link } from "react-router-dom"
 
@@ -6,7 +6,42 @@ import imgLogo from "../../assets/logo.png"
 
 import "./styles.css"
 
+import api from "../../services/api"
+
 function NewJobScreen() {
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [salary, setSalary] = useState("")
+  const [workload, setWorkload] = useState("")
+
+  const orgId = localStorage.getItem("orgId")
+
+  async function handleAddNewJob(e) {
+    e.preventDefault()
+
+    try {
+      const data = {
+        title,
+        description,
+        salary,
+        workload
+      }
+
+      await api.post("/jobs", data, {headers: {
+        Authorization: orgId 
+      }})
+
+      setTitle("")
+      setDescription("")
+      setSalary("")
+      setWorkload("")
+
+      alert("Job adicionado com sucesso")
+    }catch(err) {
+      alert("Erro, tente novamente!")
+    }
+  }
+
   return (
     <div className="container">
     <div className="container-register">
@@ -25,11 +60,37 @@ function NewJobScreen() {
       </aside>
 
       <section className="container-inputs">
-        <form>
-          <input className="input" placeholder="Titulo" required />
-          <textarea maxLength="150" className="input-description" placeholder="Descrição" required ></textarea>
-          <input className="input" placeholder="Salário" required />
-          <input type="number" className="input" placeholder="Carga Horária" required />
+        <form onSubmit={handleAddNewJob}>
+          <input 
+            className="input" 
+            placeholder="Titulo" 
+            required
+            onChange={e => setTitle(e.target.value)}
+            value={title}
+          />
+          <textarea 
+            maxLength="150" 
+            className="input-description" 
+            placeholder="Descrição" 
+            required
+            onChange={e => setDescription(e.target.value)}
+            value={description}  
+          ></textarea>
+          <input 
+            className="input" 
+            placeholder="Salário" 
+            required
+            onChange={e => setSalary(e.target.value)}
+            value={salary}
+          />
+          <input 
+            type="number" 
+            className="input" 
+            placeholder="Carga Horária" 
+            required
+            onChange={e => setWorkload(e.target.value)} 
+            value={workload} 
+          />
 
           <button type="submit" className="button">Cadastrar</button>
         </form>
